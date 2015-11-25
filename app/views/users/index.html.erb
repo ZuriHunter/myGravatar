@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>myContacts</h1>
+
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <% @users.each do |user| %>
+    <div class="thumbnail">
+     <td> <%= image_tag gravatar_url(user)%> </td>
+      <div class="caption">
+        <h3><%= user.f_name%></h3> 
+        <h3> <%= user.l_name %></h3>
+        <p><%= user.email %></p>
+        <p><%= user.phone_number %></p>
+        <p> 
+          <%= link_to 'Show',  user, class: "btn btn-primary" %> 
+          <%= link_to 'Edit', edit_user_path(user), class: "btn btn-success" %> 
+          <%=link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %> </p>
+        
+      </div>
+    </div>
+    <% end %> 
+  </div>
+</div>
+
+<%= link_to 'New User', new_user_path %>
